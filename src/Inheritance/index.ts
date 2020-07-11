@@ -1,18 +1,23 @@
 import { MatchResult } from './MatchResult';
 import { MatchReader } from './MatchReader';
-import { CsvFileReader } from './CsvFileReader';
 
-// Create abject that satisfies the 'DataReader' interface
-const csvFileReader = new CsvFileReader('football.csv');
+// LOAD data with node std lib
+// PARSE data
+const reader = new MatchReader('football.csv');
+reader.read();
 
-// Create an instance of MatchReader and pass in something satisfying 'DataReader' interface
-const matchReader = new MatchReader(csvFileReader);
-matchReader.load();
+const dateOfFirstMatch = reader.data[0][0];
+
+// array
+// date index 0
+// home team index 1
+// away team index 2
+// H for home A for away team that won index 5
 
 // ANALYZE data
 let manUnitedWins = 0;
 
-for (let match of matchReader.matches) {
+for (let match of reader.data) {
 	if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
 		// manUnited won as home team
 		manUnitedWins++;
