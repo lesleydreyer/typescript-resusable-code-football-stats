@@ -1,4 +1,4 @@
-import { MatchResult } from '../MatchResult';
+import { MatchResult } from '../../MatchResult';
 import { MatchReader } from './MatchReader';
 
 // LOAD data with node std lib
